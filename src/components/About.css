@@ -1,0 +1,27 @@
+.about-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  
+    /* padding: 20px; */
+    box-sizing: border-box;
+  }
+  
+  .image-container {
+    display: flex;
+    justify-content: center;
+    /* margin-bottom: 20px; */
+  }
+  
+  .library-image {
+    width: 300px;
+    height: 200px;
+    margin: 10px;
+  }
+  
+  .text-container {
+    /* max-width: 800px; */
+    text-align: justify;
+  }
+  

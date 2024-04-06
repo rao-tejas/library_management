@@ -1,0 +1,51 @@
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  .grid-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: 95vw;
+    height: 100vh;
+  }
+  
+  .grid-item {
+    overflow: hidden;
+  }
+  
+  .content {
+    margin-top: 20px;
+    text-align: center;
+  }
+  
+  .carousel {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden; /* Hide overflowing content */
+  }
+  
+  .carousel-inner {
+    display: flex;
+    transition: transform 0.6s ease;
+  }
+  
+  .carousel-item {
+    flex: 0 0 auto;
+    width: 100%; /* Ensure each carousel item takes full width */
+    display: none;
+  }
+  
+  .carousel-item.active {
+    display: block;
+  }
+  
+  img {
+    width: 50vw; /* Make images responsive within the carousel */
+    height: 80vh;
+    object-fit: cover;
+  }
+  
