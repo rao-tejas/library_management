@@ -1,0 +1,86 @@
+.borrow-new-books-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    width: 100vw;
+}
+
+.filter-dropdown {
+    margin-bottom: 20px;
+    font-size: 20px;
+    /* Increase font size */
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: bold;
+}
+
+/* Additional CSS for dropdown styling */
+.filter-dropdown select {
+    padding: 12px;
+    /* Increase padding */
+    font-size: 20px;
+    /* Increase font size */
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: bold;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #fff;
+    cursor: pointer;
+}
+
+.book-grid {
+    display: flex;
+    /* Use flexbox to align books */
+    flex-wrap: wrap;
+    /* Allow books to wrap to the next line */
+    justify-content: center;
+    /* Align books to the center horizontally */
+}
+
+.book-card {
+    width: 200px;
+    /* Set a fixed width for each book card */
+    margin: 10px;
+    /* Add margin between book cards */
+    border-radius: 5px;
+    padding: 20px;
+    overflow: hidden;
+    /* Ensure consistent height for each book card */
+    background-color: #f0f0f0;
+    /* Set the background color */
+}
+
+
+.book-card img {
+    width: 100%;
+    /* Make all images fill their container */
+    height: 327px;
+    /* Set a fixed height for all images */
+    object-fit: cover;
+    /* Ensure images maintain aspect ratio and cover the container */
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+.book-details {
+    display: flex;
+    padding: 10px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-weight: bold;
+    gap: 10px;
+}
+
+
+.borrowButton button {
+    background-color: #3498db;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    /* border-radius: 5px; */
+    /* margin-bottom: 2px; */
+    cursor: pointer;
+}
+
+.borrowButton button:hover {
+    background-color: #2980b9;
+}

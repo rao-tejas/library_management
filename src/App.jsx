@@ -1,11 +1,14 @@
-
 import './App.css';
 import Navbar from './components/Navbar';
 import Home from './components/Home';
 import Login from './components/Login';
 import About from './components/About';
-import User from './components/User';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import User from './components/User';
+import SignUp from './components/SignUp';
+import BorrowNewBook from './components/BorrowNewBook';
+import BorrowedBooks from './components/BorrowedBooks';
+
 
 function App() {
   return (
@@ -13,10 +16,13 @@ function App() {
       <Navbar />
       <div className="content">
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/about" element={<About />} />
-          {/* <Route path="/user/:username" element={<User />} /> */}
+          <Route path="/user/:username" element={<User />} />
+          <Route path="/signup" element={<SignUp />} /> 
+          <Route path="/borrowedBook/:username" element={<BorrowedBooks />} />
+          <Route path="/borrowNewBook/:username" element={<BorrowNewBook />} /> 
         </Routes>
       </div>
     </BrowserRouter>

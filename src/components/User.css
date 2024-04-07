@@ -1,0 +1,67 @@
+.user-profile.fullscreen {
+   width: 100vw;
+   margin-top: 5vh;
+}
+
+.user-details {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.profile-photo img {
+    width: 17vw;
+    height: 38vh;/* Adjust size as needed */
+    border-radius: 40%; /* Make the image round */
+    object-fit: cover;
+    margin-bottom: 20px;
+}
+
+.details {
+    margin-top: 20px;
+}
+
+.user-details-table {
+    width: 40vw;
+    border-collapse: collapse;
+}
+
+.user-details-table td, .user-details-table th {
+    padding: 10px;
+    border: 1px solid #dddddd;
+    text-align: left;
+    font-size: 1em;
+}
+
+.user-details-table th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+}
+
+.user-details-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.button-container{
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    padding:20px;
+}
+
+.action-button {
+    background-color: #3498db;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 20px 30px;
+    border-radius: 10px;
+    margin: 2px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.action-button:hover {
+    background-color: #2980b9;
+}

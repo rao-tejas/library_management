@@ -3,7 +3,8 @@ import library1 from '../assets/Library.png';
 import library2 from '../assets/Library 3.jpg';
 import library3 from '../assets/libraryBooks.jpg';
 import Login from './Login.jsx';
-import './Home.css'; // Import your CSS file
+import './Home.css'; 
+// import Link from 'react-router-dom'
 
 const Home = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
