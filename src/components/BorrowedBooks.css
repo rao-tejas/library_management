@@ -1,38 +1,83 @@
+/* BorrowedBooks.css */
+
 .borrowed-books-container {
     display: flex;
     flex-direction: column;
     align-items: center;
     padding: 20px;
+    margin-top: 10vh;
     width: 100vw;
-}
-
-.grid-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 20px;
-}
-
-.grid-item {
+  }
+  
+  h2 {
+    margin-bottom: 20px;
+    font-size: 24px;
+  }
+  
+  .borrowed-grid-container {
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    border: 1px solid #ccc;
+    /* Use flexbox to align books */
+    flex-wrap: wrap;
+    /* Allow books to wrap to the next line */
+    justify-content: center;
+    /* Align books to the center horizontally */
+  }
+  
+  .borrowed-book-grid-item {
+    width: 200px;
+    /* Set a fixed width for each book card */
+    margin: 10px;
+    /* Add margin between book cards */
     border-radius: 5px;
-    padding: 10px;
+    padding: 20px;
+    overflow: hidden;
+    /* Ensure consistent height for each book card */
     background-color: #f0f0f0;
-}
-
-.grid-item img {
+    /* Set the background color */
+  }
+  
+  .borrowed-book-grid-item img {
     width: 100%;
-    height: 30vh;
+    /* Make all images fill their container */
+    height: 327px;
+    /* Set a fixed height for all images */
+    object-fit: cover;
+    /* Ensure images maintain aspect ratio and cover the container */
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
-}
-
-.book-details {
-    padding: 10px;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    font-weight: bold;
-    gap: 10px;
+  }
+  
+  .book-details {
+    display: block;
+    margin-top: 10px;
     text-align: center;
-}
+  }
+  
+  .returnButton button {
+    margin-top: 10px;
+    padding: 8px 16px;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .returnButton button:hover {
+    background-color: #2980b9;
+  }
+
+  .borrowNewRoute button {
+    margin-top: 10px;
+    padding: 18px 26px;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  .borrowNewRoute button:hover{
+    background-color: #2980b9;
+
+  }
+  

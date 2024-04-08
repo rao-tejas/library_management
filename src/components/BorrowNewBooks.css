@@ -4,6 +4,7 @@
     align-items: center;
     padding: 20px;
     width: 95vw;
+    margin-top: 10vh;
 }
 
 .filter-dropdown {
@@ -62,7 +63,7 @@
     border-top-right-radius: 5px;
 }
 
-.book-details {
+.borrow-new-book-details {
     display: flex;
     padding: 10px;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
@@ -84,3 +85,17 @@
 .borrowButton button:hover {
     background-color: #2980b9;
 }
+
+.goToBorrowed button {
+    margin-top: 10px;
+    padding: 18px 26px;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  .goToBorrowed button:hover{
+    background-color: #2980b9;
+
+  }

@@ -4,10 +4,8 @@ import './User.css';
 import user from '../assets/user.png';
 import { useNavigate } from 'react-router-dom';
 
-
 const User = () => {
     const navigate = useNavigate(); 
-
     const params = useParams();
     const [studentDetails, setStudentDetails] = useState(null);
 
@@ -36,12 +34,21 @@ const User = () => {
         navigate(`/borrowedBook/${params.username}`); 
     };
 
+    const handleProfilePictureClick = () => {
+        // Trigger the hidden input element to open file picker
+        document.getElementById('profile-picture-input').click();
+    };
+
+   
+    
+
     return (
         <div className="user-profile fullscreen">
-            {/* <h2>User Profile</h2> */}
             {studentDetails ? (
                 <div className="user-details">
-                    <div className="profile-photo">
+                    <div className="profile-photo" onClick={handleProfilePictureClick}>
+                        {/* Hidden input element for file upload */}
+                        <input type="file" id="profile-picture-input" accept="image/*" style={{ display: 'none' }} />
                         <img src={user} alt="Profile" />
                     </div>
                     <div className="details">
@@ -49,7 +56,7 @@ const User = () => {
                             <tbody>
                                 <tr>
                                     <td>Full Name:</td>
-                                    <td>{studentDetails.name} {studentDetails.lastName}</td>
+                                    <td>{studentDetails.name}</td>
                                 </tr>
                                 <tr>
                                     <td>Email:</td>
@@ -67,19 +74,17 @@ const User = () => {
                                     <td>Section:</td>
                                     <td>{studentDetails.section}</td>
                                 </tr>
-                                {/* Add other student details as needed */}
                             </tbody>
                         </table>
                     </div>
-
                 </div>
             ) : (
                 <p>Loading...</p>
             )}
-             <div className="button-container">
-                    <button className="action-button" onClick={() => handleBorrowNewBooksClick()}>Borrow New Books</button>
-                    <button className="action-button" onClick={() => handleBorrowedBooksClick()}>Borrowed Books</button>
-                </div>
+            <div className="button-container">
+                <button className="action-button" onClick={handleBorrowNewBooksClick}>Borrow New Books</button>
+                <button className="action-button" onClick={handleBorrowedBooksClick}>Borrowed Books</button>
+            </div>
         </div>
     );
 };

@@ -2,9 +2,13 @@ import { useState, useEffect } from 'react';
 import './BorrowNewBooks.css';
 import { useParams } from 'react-router-dom';
 import toast from 'react-hot-toast';
+import Swal from 'sweetalert2';
+import { useNavigate } from 'react-router-dom';
+
 
 
 const BorrowNewBook = () => {
+    const navigate = useNavigate(); 
     const [books, setBooks] = useState([]);
     const [selectedDepartment, setSelectedDepartment] = useState('All');
     const [borrowMessage, setBorrowMessage] = useState('');
@@ -44,43 +48,72 @@ const BorrowNewBook = () => {
             console.error('Error fetching books:', error.message);
         }
     };
-    
-    const handleBorrowClick = async (bookId) => {
-        try {
-            const response = await fetch('http://localhost:8080/api/transaction/borrowBook/borrow', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                    email: params.username, 
-                    bookId: bookId,
-                }),
-            });
-    
-            if (!response.ok) {
-                throw new Error('Failed to borrow book');
-            }
-    
-            const data = await response.json();
-            if (data.status === 'success') {
-                // Borrowing was successful
-                setBorrowMessage(data.message);
-                toast.success("Book Borrowed Sucessfully"); 
-                fetchBooks();
-            } else {
-                // Borrowing failed
-                setBorrowMessage(data.message);
-                toast.error(data.message); 
-            }
-        } catch (error) {
-            console.error('Error borrowing book:', error.message);
-            toast.error('Error borrowing books:', error.message); 
-            setBorrowMessage('An error occurred while borrowing the book.');
-        }
+
+    const handleBorrowedBook = async ()=>{
+        navigate(`/borrowedBook/${params.username}`); 
+
     };
-    
-    
+    const handleBorrowClick = async (bookId) => {
+        const swalWithBootstrapButtons = Swal.mixin({
+            customClass: {
+                confirmButton: "btn btn-success",
+                cancelButton: "btn btn-danger"
+            },
+            buttonsStyling: false
+        });
+
+        swalWithBootstrapButtons.fire({
+            title: "Are you sure?",
+            text: "Do you want to borrow this book?",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonText: "Yes, borrow it!",
+            cancelButtonText: "No, cancel!",
+            reverseButtons: true
+        }).then(async (result) => {
+            if (result.isConfirmed) {
+                try {
+                    const response = await fetch('http://localhost:8080/api/transaction/borrowBook/borrow', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({
+                            email: params.username,
+                            bookId: bookId,
+                        }),
+                    });
+
+                    const data = await response.json();
+                    if (data.status === 'success') {
+                        // Borrowing was successful
+                        setBorrowMessage(data.message);
+                        toast.success("Book Borrowed Successfully");
+                        fetchBooks();
+                    } else {
+                        // Borrowing failed
+                        setBorrowMessage(data.message);
+                        toast.error(data.message);
+                    }
+                } catch (error) {
+                    console.error('Error borrowing book:', error.message);
+                    toast.error('Error borrowing books:', error.message);
+                    setBorrowMessage('An error occurred while borrowing the book.');
+                }
+            } else if (
+                result.dismiss === Swal.DismissReason.cancel
+            ) {
+                swalWithBootstrapButtons.fire(
+                    "Cancelled",
+                    "Your imaginary file is safe :)",
+                    "error"
+                );
+            }
+        });
+    };
+
+
+
     const filteredBooks = selectedDepartment === 'All' ? books : books.filter(book => book.department === selectedDepartment);
 
     return (
@@ -100,7 +133,7 @@ const BorrowNewBook = () => {
                 {filteredBooks.map(book => (
                     <div key={book.id} className="book-card">
                         <img src={`http://localhost:5173/Books/${book.coverImage}`} alt={book.bookName} />
-                        <div className="book-details">
+                        <div className="borrow-new-book-details">
                             <p>Position: {book.position}</p>
                             <p>Count: {book.count}</p>
                         </div>
@@ -111,6 +144,9 @@ const BorrowNewBook = () => {
                         </div>
                     </div>
                 ))}
+            </div>
+            <div className="goToBorrowed">
+                <button onClick={() => handleBorrowedBook()}>Go To Borrowd Books</button>
             </div>
         </div>
     );

@@ -1,6 +1,7 @@
 .user-profile.fullscreen {
    width: 100vw;
    margin-top: 5vh;
+   height: 80vh;
 }
 
 .user-details {
