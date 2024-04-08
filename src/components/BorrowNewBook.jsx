@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import './BorrowNewBooks.css';
 import { useParams } from 'react-router-dom';
+import toast from 'react-hot-toast';
 
 
 const BorrowNewBook = () => {
@@ -65,16 +66,16 @@ const BorrowNewBook = () => {
             if (data.status === 'success') {
                 // Borrowing was successful
                 setBorrowMessage(data.message);
-                alert("Book Borrowed Sucessfully"); 
+                toast.success("Book Borrowed Sucessfully"); 
                 fetchBooks();
             } else {
                 // Borrowing failed
                 setBorrowMessage(data.message);
-                alert(data.message); 
+                toast.error(data.message); 
             }
         } catch (error) {
             console.error('Error borrowing book:', error.message);
-            alert('Error borrowing books:', error.message); 
+            toast.error('Error borrowing books:', error.message); 
             setBorrowMessage('An error occurred while borrowing the book.');
         }
     };

@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './SignUp.css';
+import toast from 'react-hot-toast';
+
 
 const SignUp = () => {
   const navigate = useNavigate(); 
@@ -47,16 +49,19 @@ const SignUp = () => {
       });
 
       if (response.ok) {
-        // Navigate to login page after successful registration
         navigate('/');
+        toast.success('Successfully registered');
       }else {
         const errorData = await response.json();
-        setErrorMessage(errorData.message); // Assuming the error message is returned in a 'message' field
+        setErrorMessage(errorData.message);
+        toast.error(errorData.message);
         return;
       }
     } catch (error) {
         // const errorData = await response.json();
-        setErrorMessage("Email Address Alredy Exist"); // Assuming the error message is returned in a 'message' field
+        setErrorMessage("Email Address Alredy Exist");
+        toast.error("Email Address Alredy Exist"); 
+        // Assuming the error message is returned in a 'message' field
     }
   };
 

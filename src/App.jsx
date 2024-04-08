@@ -8,11 +8,13 @@ import User from './components/User';
 import SignUp from './components/SignUp';
 import BorrowNewBook from './components/BorrowNewBook';
 import BorrowedBooks from './components/BorrowedBooks';
-
+import  { Toaster } from 'react-hot-toast';
 
 function App() {
   return (
     <BrowserRouter>
+      <Toaster  position="bottom-center"
+        reverseOrder={false} />
       <Navbar />
       <div className="content">
         <Routes>
@@ -20,9 +22,9 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/about" element={<About />} />
           <Route path="/user/:username" element={<User />} />
-          <Route path="/signup" element={<SignUp />} /> 
+          <Route path="/signup" element={<SignUp />} />
           <Route path="/borrowedBook/:username" element={<BorrowedBooks />} />
-          <Route path="/borrowNewBook/:username" element={<BorrowNewBook />} /> 
+          <Route path="/borrowNewBook/:username" element={<BorrowNewBook />} />
         </Routes>
       </div>
     </BrowserRouter>

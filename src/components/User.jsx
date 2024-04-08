@@ -49,7 +49,7 @@ const User = () => {
                             <tbody>
                                 <tr>
                                     <td>Full Name:</td>
-                                    <td>{studentDetails.firstName} {studentDetails.lastName}</td>
+                                    <td>{studentDetails.name} {studentDetails.lastName}</td>
                                 </tr>
                                 <tr>
                                     <td>Email:</td>

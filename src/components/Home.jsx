@@ -20,7 +20,7 @@ const Home = () => {
   return (
     <div className="container">
       <div className="grid-container">
-        <div className="grid-item">
+        <div className="corosal-grid-item">
           <div className="content">
             <h1>Library Management System</h1>
             <p>Knowledge is free at the library. Just bring your own container.</p>
@@ -32,12 +32,12 @@ const Home = () => {
 
           </div>
         </div>
-        <div className="grid-item">
+        <div className="corosal-grid-item">
           <div className="carousel">
             <div className="carousel-inner" style={{ gridRow: '1/3' }}>
               {images.map((image, index) => (
                 <div key={index} className={`carousel-item ${index === currentSlide ? 'active' : ''}`}>
-                  <img className="d-block w-100" src={image} alt={`Slide ${index + 1}`} />
+                  <img className="corosal-image" src={image} alt={`Slide ${index + 1}`} />
                 </div>
               ))}
             </div>

@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Login.css';
+import toast from 'react-hot-toast';
 
 const Login = () => {
   const navigate  = useNavigate(); // Initialize useHistory hook
@@ -29,20 +30,20 @@ const Login = () => {
       if (response.ok) {
         const data = await response.text();
         if (data === 'Login successful') {
-          // Navigate to user profile page
+          toast.success('Login Sucessfully..');
           navigate(`/user/${email}`);
         } else {
           // Show error message if login failed
-          alert('Login failed. Please try again.');
+          toast.error('Login Failed..');
         }
       } else {
         // Show error message if response status is not OK
-        alert('Login failed. Please try again.');
+        toast.error('Login failed. Please try again.');
       }
     } catch (error) {
       console.error('Error logging in:', error);
       // Show error message for any unexpected errors
-      alert('An unexpected error occurred. Please try again later.');
+      toast.error('An unexpected error occurred. Please try again later.');
     }
   };
   
