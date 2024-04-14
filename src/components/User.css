@@ -1,36 +1,58 @@
+
 .user-profile.fullscreen {
-   width: 100vw;
-   margin-top: 5vh;
-   height: 80vh;
+    display: flex;
+    align: center;
+    justify-content: center;
+    width: 97vw;
+    margin-top: 4vh;
+    height: 85vh;
+    /* background-color: #f0f0f0; */
+    /* Add a background color */
+    padding: 20px;
+    overflow-x: hidden; /* Prevent horizontal scrolling */
+
 }
 
+/* Style for the user details section */
 .user-details {
     display: flex;
     flex-direction: column;
+    width: 26vw;
+    margin:15px;
+    /* height:30vh; */
     align-items: center;
     text-align: center;
+    background-color: #fff;
+    /* Background color for user details */
+    padding: 18px;
+    /* Add padding for spacing */
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
+/* Style for the profile photo */
 .profile-photo img {
     width: 17vw;
-    height: 38vh;/* Adjust size as needed */
-    border-radius: 40%; /* Make the image round */
+    height: 35vh;
+    border-radius: 50%;
     object-fit: cover;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
+    border: 4px solid #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    /* Add a subtle shadow */
 }
 
-.details {
-    margin-top: 20px;
-}
-
+/* Style for the user details table */
 .user-details-table {
-    width: 40vw;
+    width: 25vw;
+    /* Make the table full width */
     border-collapse: collapse;
 }
 
-.user-details-table td, .user-details-table th {
+.user-details-table td,
+.user-details-table th {
     padding: 10px;
-    border: 1px solid #dddddd;
+    border: 1px solid #ddd;
     text-align: left;
     font-size: 1em;
 }
@@ -44,25 +66,32 @@
     background-color: #f9f9f9;
 }
 
-.button-container{
+/* Style for the button container */
+.button-container {
     display: flex;
     justify-content: center;
-    margin-top: 20px;
-    padding:20px;
+    margin-top: 30px;
+        /* margin-bottom:2px; */
+
 }
 
+/* Style for action buttons */
 .action-button {
     background-color: #3498db;
     color: #fff;
     border: none;
-    border-radius: 5px;
+    border-radius: 10%;
     padding: 20px 30px;
-    border-radius: 10px;
-    margin: 2px;
+    /* Reduce padding for smaller buttons */
+    margin: 0 8px;
+    /* Add margin between buttons */
     cursor: pointer;
     transition: background-color 0.3s ease;
 }
 
 .action-button:hover {
     background-color: #2980b9;
+}
+.button-icon {
+    margin-right: 5px; /* Add space between icon and text */
 }

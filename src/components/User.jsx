@@ -1,11 +1,12 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import './User.css';
-import user from '../assets/user.png';
 import { useNavigate } from 'react-router-dom';
+import { FaBook, FaListAlt } from 'react-icons/fa';
+
 
 const User = () => {
-    const navigate = useNavigate(); 
+    const navigate = useNavigate();
     const params = useParams();
     const [studentDetails, setStudentDetails] = useState(null);
 
@@ -27,11 +28,11 @@ const User = () => {
     }, [params.username]);
 
     const handleBorrowNewBooksClick = () => {
-        navigate(`/borrowNewBook/${params.username}`); 
+        navigate(`/borrowNewBook/${params.username}`);
     };
 
     const handleBorrowedBooksClick = () => {
-        navigate(`/borrowedBook/${params.username}`); 
+        navigate(`/borrowedBook/${params.username}`);
     };
 
     const handleProfilePictureClick = () => {
@@ -39,18 +40,24 @@ const User = () => {
         document.getElementById('profile-picture-input').click();
     };
 
-   
-    
+
+
 
     return (
         <div className="user-profile fullscreen">
             {studentDetails ? (
                 <div className="user-details">
+                    {/* <h2>WELCOME</h2> */}
                     <div className="profile-photo" onClick={handleProfilePictureClick}>
                         {/* Hidden input element for file upload */}
                         <input type="file" id="profile-picture-input" accept="image/*" style={{ display: 'none' }} />
-                        <img src={user} alt="Profile" />
+                        {studentDetails.profilePicturePath ? (
+                            <img src={`http://localhost:5173/Users/${studentDetails.profilePicturePath}`} alt={studentDetails.name} />
+                        ) : (
+                            <img src={`http://localhost:5173/Users/user.png`} alt={studentDetails.name} />
+                        )}
                     </div>
+
                     <div className="details">
                         <table className="user-details-table">
                             <tbody>
@@ -76,15 +83,22 @@ const User = () => {
                                 </tr>
                             </tbody>
                         </table>
+
+                        <div className="button-container">
+                            <button className="action-button" onClick={handleBorrowNewBooksClick}>
+                                <FaBook className="button-icon" /> Borrow New Books
+                            </button>
+                            <button className="action-button" onClick={handleBorrowedBooksClick}>
+                                <FaListAlt className="button-icon" /> Borrowed Books
+                            </button>
+                        </div>
+
                     </div>
                 </div>
             ) : (
                 <p>Loading...</p>
             )}
-            <div className="button-container">
-                <button className="action-button" onClick={handleBorrowNewBooksClick}>Borrow New Books</button>
-                <button className="action-button" onClick={handleBorrowedBooksClick}>Borrowed Books</button>
-            </div>
+
         </div>
     );
 };
